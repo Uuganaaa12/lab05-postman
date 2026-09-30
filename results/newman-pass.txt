@@ -4,15 +4,15 @@ Lab05 Бүртгэлийн API
 
 ❏ 01 Идэвхтэй оюутан урьдачаа үзсэн бол 201 OK
 ↳ setup: оюутан B231234567
-  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 92ms]
+  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 34ms]
   ✓  Setup амжилттай
 
 ↳ setup: хичээл CS313
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 5ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 4ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [201 Created, 202B, 2ms]
+  POST http://localhost:3000/registrations [201 Created, 202B, 3ms]
   ✓  Статус 201
   ✓  result нь OK
   ✓  registrationID тоо байна
@@ -23,27 +23,27 @@ Lab05 Бүртгэлийн API
   ✓  Setup амжилттай
 
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [200 OK, 192B, 23ms]
+  POST http://localhost:3000/registrations [200 OK, 192B, 1ms]
   ✓  Статус 200
   ✓  result нь ERROR_NO_STUDENT
 
 ❏ 03 Идэвхгүй оюутан бүртгүүлэхэд ERROR_INACTIVE_STUDENT
 ↳ setup: оюутан B231000003
-  PUT http://localhost:3000/students/B231000003 [200 OK, 178B, 6ms]
+  PUT http://localhost:3000/students/B231000003 [200 OK, 178B, 2ms]
   ✓  Setup амжилттай
 
 ↳ setup: хичээл CS313
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [200 OK, 198B, 2ms]
+  POST http://localhost:3000/registrations [200 OK, 198B, 3ms]
   ✓  Статус 200
   ✓  result нь ERROR_INACTIVE_STUDENT
 
 ❏ 04 Байхгүй хичээлд бүртгүүлэхэд ERROR_NO_COURSE
 ↳ setup: оюутан B231000004
-  PUT http://localhost:3000/students/B231000004 [200 OK, 178B, 4ms]
+  PUT http://localhost:3000/students/B231000004 [200 OK, 178B, 11ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
@@ -72,21 +72,21 @@ Lab05 Бүртгэлийн API
   ✓  Setup амжилттай
 
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [200 OK, 198B, 1ms]
+  POST http://localhost:3000/registrations [200 OK, 198B, 2ms]
   ✓  Статус 200
   ✓  result нь ERROR_INACTIVE_STUDENT
 
 ❏ 07 Хоёр урьдачийн нэгийг л үзсэн бол ERROR_PREREQUISITES
 ↳ setup: оюутан B231000007
-  PUT http://localhost:3000/students/B231000007 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/students/B231000007 [200 OK, 178B, 1ms]
   ✓  Setup амжилттай
 
 ↳ setup: хичээл CS320
-  PUT http://localhost:3000/courses/CS320 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/courses/CS320 [200 OK, 178B, 2ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [200 OK, 215B, 1ms]
+  POST http://localhost:3000/registrations [200 OK, 215B, 3ms]
   ✓  Статус 200
   ✓  result нь ERROR_PREREQUISITES
   ✓  missing нь зөвхөн CS202
@@ -107,7 +107,7 @@ Lab05 Бүртгэлийн API
 
 ❏ 09 studentID дутуу бол 400 ERROR_BAD_REQUEST
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [400 Bad Request, 202B, 0µs]
+  POST http://localhost:3000/registrations [400 Bad Request, 202B, 1ms]
   ✓  Статус 400
   ✓  result нь ERROR_BAD_REQUEST
 
@@ -117,22 +117,29 @@ Lab05 Бүртгэлийн API
   ✓  Статус 400
   ✓  result нь ERROR_BAD_JSON
 
-┌─────────────────────────┬──────────────────┬─────────────────┐
-│                         │         executed │          failed │
-├─────────────────────────┼──────────────────┼─────────────────┤
-│              iterations │                1 │               0 │
-├─────────────────────────┼──────────────────┼─────────────────┤
-│                requests │               23 │               0 │
-├─────────────────────────┼──────────────────┼─────────────────┤
-│            test-scripts │               23 │               0 │
-├─────────────────────────┼──────────────────┼─────────────────┤
-│      prerequest-scripts │                0 │               0 │
-├─────────────────────────┼──────────────────┼─────────────────┤
-│              assertions │               36 │               0 │
-├─────────────────────────┴──────────────────┴─────────────────┤
-│ total run duration: 464ms                                    │
-├──────────────────────────────────────────────────────────────┤
-│ total data received: 551B (approx)                           │
-├──────────────────────────────────────────────────────────────┤
-│ average response time: 6ms [min: 1ms, max: 92ms, s.d.: 19ms] │
-└──────────────────────────────────────────────────────────────┘
+❏ Нэмэлт: нийтийн API
+↳ Нэмэлт: jsonplaceholder /users
+  GET https://jsonplaceholder.typicode.com/users [200 OK, 3.01kB, 116ms]
+  ✓  Статус 200
+  ✓  Хариу массив
+  ✓  Эхний хэрэглэгч Leanne Graham
+
+┌─────────────────────────┬──────────────────┬──────────────────┐
+│                         │         executed │           failed │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              iterations │                1 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│                requests │               24 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│            test-scripts │               24 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│      prerequest-scripts │                0 │                0 │
+├─────────────────────────┼──────────────────┼──────────────────┤
+│              assertions │               39 │                0 │
+├─────────────────────────┴──────────────────┴──────────────────┤
+│ total run duration: 707ms                                     │
+├───────────────────────────────────────────────────────────────┤
+│ total data received: 2.4kB (approx)                           │
+├───────────────────────────────────────────────────────────────┤
+│ average response time: 8ms [min: 1ms, max: 116ms, s.d.: 23ms] │
+└───────────────────────────────────────────────────────────────┘

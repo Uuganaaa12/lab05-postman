@@ -61,12 +61,16 @@ echo "exit=$pipestatus[1]"
 
 | Ажиллуулалт | Файл | requests failed | assertions executed | assertions failed | exit |
 |---|---|---|---|---|---|
-| PASS | [newman-pass.txt](results/newman-pass.txt) | 0 | 36 | 0 | 0 |
-| FAIL | [newman-fail.txt](results/newman-fail.txt) | 0 | 36 | 1 | 1 |
-| DOWN | [newman-down.txt](results/newman-down.txt) | 23 | 36 | 36 | 1 |
+| PASS | [newman-pass.txt](results/newman-pass.txt) | 0 | 39 | 0 | 0 |
+| FAIL | [newman-fail.txt](results/newman-fail.txt) | 0 | 39 | 1 | 1 |
+| DOWN | [newman-down.txt](results/newman-down.txt) | 23 | 39 | 36 | 1 |
 
-Тест 10 байгаа, спецификаци бүрд нэг folder. Нийт 36 assertion ажилласан, үүнд setup PUT-үүдийн "Setup амжилттай" шалгалт ч орсон.
+Өөрийн API-д 10 тест байгаа, спецификаци бүрд нэг folder, нэмэлтээр нийтийн API-д 1 тест. Нийт 39 assertion ажилласан, үүнд setup PUT-үүдийн "Setup амжилттай" шалгалт ч орсон.
 
 FAIL-д [lab05-collection-fail.json](lab05-collection-fail.json)-ийн 1-р тест 201-ийн оронд 200 хүлээдэг болгосон. Гаралтад `expected response to have status code 200 but got 201` гэж гарсан. Үндсэн collection зөв хэвээр.
 
-DOWN-д серверээ унтраагаад ажиллуулахад бүх хүсэлт `connect ECONNREFUSED 127.0.0.1:3000` гэж унасан. FAIL-д сервер хариу өгсөн ч миний хүлээлт буруу байсан бол DOWN-д сервер огт хариулаагүй, өөрөөр хэлбэл энэ нь oracle-ийн биш холболтын буюу интерфейсийн алдаа юм.
+DOWN-д серверээ унтраагаад ажиллуулахад localhost руу явсан 23 хүсэлт бүгд `connect ECONNREFUSED 127.0.0.1:3000` гэж унасан, харин jsonplaceholder руу явсан ганц хүсэлт давсан. FAIL-д сервер хариу өгсөн ч миний хүлээлт буруу байсан бол DOWN-д сервер огт хариулаагүй, өөрөөр хэлбэл энэ нь oracle-ийн биш холболтын буюу интерфейсийн алдаа юм.
+
+## Нийтийн API
+
+Collection-ийн сүүлд `https://jsonplaceholder.typicode.com/users` руу GET хийгээд 3 oracle тавьсан: статус 200, хариу массив, эхний хэрэглэгч "Leanne Graham". Setup хэрэггүй, ганц хүсэлтээр шалгадаг нь хялбар байсан ч өгөгдөл нь өөр хүний гарт байгаа тул тэр нэрийг хэн нэгэн өөрчилбөл миний тест унана, харин өөрийн API-д өгөгдлөө setup-аар өөрөө тавьдаг.

@@ -1118,6 +1118,50 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Нэмэлт: нийтийн API",
+			"item": [
+				{
+					"name": "Нэмэлт: jsonplaceholder /users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/users",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Статус 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Хариу массив\", function () {",
+									"    pm.expect(pm.response.json()).to.be.an(\"array\");",
+									"});",
+									"pm.test(\"Эхний хэрэглэгч Leanne Graham\", function () {",
+									"    pm.expect(pm.response.json()[0].name).to.eql(\"Leanne Graham\");",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
 		}
 	],
 	"variable": [

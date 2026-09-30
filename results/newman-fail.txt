@@ -4,11 +4,11 @@ Lab05 Бүртгэлийн API (FAIL)
 
 ❏ 01 Идэвхтэй оюутан урьдачаа үзсэн бол 201 OK
 ↳ setup: оюутан B231234567
-  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 30ms]
+  PUT http://localhost:3000/students/B231234567 [200 OK, 178B, 40ms]
   ✓  Setup амжилттай
 
 ↳ setup: хичээл CS313
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 4ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
@@ -23,27 +23,27 @@ Lab05 Бүртгэлийн API (FAIL)
   ✓  Setup амжилттай
 
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [200 OK, 192B, 1ms]
+  POST http://localhost:3000/registrations [200 OK, 192B, 3ms]
   ✓  Статус 200
   ✓  result нь ERROR_NO_STUDENT
 
 ❏ 03 Идэвхгүй оюутан бүртгүүлэхэд ERROR_INACTIVE_STUDENT
 ↳ setup: оюутан B231000003
-  PUT http://localhost:3000/students/B231000003 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/students/B231000003 [200 OK, 178B, 9ms]
   ✓  Setup амжилттай
 
 ↳ setup: хичээл CS313
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [200 OK, 198B, 3ms]
+  POST http://localhost:3000/registrations [200 OK, 198B, 5ms]
   ✓  Статус 200
   ✓  result нь ERROR_INACTIVE_STUDENT
 
 ❏ 04 Байхгүй хичээлд бүртгүүлэхэд ERROR_NO_COURSE
 ↳ setup: оюутан B231000004
-  PUT http://localhost:3000/students/B231000004 [200 OK, 178B, 3ms]
+  PUT http://localhost:3000/students/B231000004 [200 OK, 178B, 5ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
@@ -53,22 +53,22 @@ Lab05 Бүртгэлийн API (FAIL)
 
 ❏ 05 Урьдач хичээлээ үзээгүй бол ERROR_PREREQUISITES
 ↳ setup: оюутан B231000005
-  PUT http://localhost:3000/students/B231000005 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/students/B231000005 [200 OK, 178B, 13ms]
   ✓  Setup амжилттай
 
 ↳ setup: хичээл CS313
-  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/courses/CS313 [200 OK, 178B, 2ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [200 OK, 215B, 6ms]
+  POST http://localhost:3000/registrations [200 OK, 215B, 2ms]
   ✓  Статус 200
   ✓  result нь ERROR_PREREQUISITES
   ✓  missing нь CS201
 
 ❏ 06 Идэвхгүй оюутан байхгүй хичээлд: эхлээд оюутны алдаа
 ↳ setup: оюутан B231000006
-  PUT http://localhost:3000/students/B231000006 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/students/B231000006 [200 OK, 178B, 4ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
@@ -82,22 +82,22 @@ Lab05 Бүртгэлийн API (FAIL)
   ✓  Setup амжилттай
 
 ↳ setup: хичээл CS320
-  PUT http://localhost:3000/courses/CS320 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/courses/CS320 [200 OK, 178B, 2ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
-  POST http://localhost:3000/registrations [200 OK, 215B, 1ms]
+  POST http://localhost:3000/registrations [200 OK, 215B, 9ms]
   ✓  Статус 200
   ✓  result нь ERROR_PREREQUISITES
   ✓  missing нь зөвхөн CS202
 
 ❏ 08 Урьдачгүй хичээлд хоосон coursesTaken-тэй оюутан 201 OK
 ↳ setup: оюутан B231000008
-  PUT http://localhost:3000/students/B231000008 [200 OK, 178B, 1ms]
+  PUT http://localhost:3000/students/B231000008 [200 OK, 178B, 12ms]
   ✓  Setup амжилттай
 
 ↳ setup: хичээл CS100
-  PUT http://localhost:3000/courses/CS100 [200 OK, 178B, 3ms]
+  PUT http://localhost:3000/courses/CS100 [200 OK, 178B, 1ms]
   ✓  Setup амжилттай
 
 ↳ POST /registrations
@@ -117,25 +117,32 @@ Lab05 Бүртгэлийн API (FAIL)
   ✓  Статус 400
   ✓  result нь ERROR_BAD_JSON
 
-┌─────────────────────────┬─────────────────┬─────────────────┐
-│                         │        executed │          failed │
-├─────────────────────────┼─────────────────┼─────────────────┤
-│              iterations │               1 │               0 │
-├─────────────────────────┼─────────────────┼─────────────────┤
-│                requests │              23 │               0 │
-├─────────────────────────┼─────────────────┼─────────────────┤
-│            test-scripts │              23 │               0 │
-├─────────────────────────┼─────────────────┼─────────────────┤
-│      prerequest-scripts │               0 │               0 │
-├─────────────────────────┼─────────────────┼─────────────────┤
-│              assertions │              36 │               1 │
-├─────────────────────────┴─────────────────┴─────────────────┤
-│ total run duration: 414ms                                   │
-├─────────────────────────────────────────────────────────────┤
-│ total data received: 551B (approx)                          │
-├─────────────────────────────────────────────────────────────┤
-│ average response time: 3ms [min: 1ms, max: 30ms, s.d.: 5ms] │
-└─────────────────────────────────────────────────────────────┘
+❏ Нэмэлт: нийтийн API
+↳ Нэмэлт: jsonplaceholder /users
+  GET https://jsonplaceholder.typicode.com/users [200 OK, 3.01kB, 142ms]
+  ✓  Статус 200
+  ✓  Хариу массив
+  ✓  Эхний хэрэглэгч Leanne Graham
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                24 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                24 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 0 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                39 │                1 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 883ms                                      │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 2.4kB (approx)                            │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 11ms [min: 1ms, max: 142ms, s.d.: 28ms] │
+└────────────────────────────────────────────────────────────────┘
 
   #  failure         detail                                                                      
                                                                                                  
