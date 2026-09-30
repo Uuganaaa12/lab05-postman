@@ -49,3 +49,24 @@ F.CSA313 Программ хангамжийн чанарын баталгаа �
 ## Collection
 
 [lab05-collection.json](lab05-collection.json) дотор спецификаци бүр тусдаа folder. Folder бүр өөрийн оюутан, хичээлийг PUT-ээр бэлдээд `POST /registrations` илгээнэ, тиймээс ганцаараа ч ажилладаг. Серверийг дахин асаагаад folder бүрийг `newman run --folder`-оор дангаар нь ажиллуулахад бүгд давсан. Сервер өгөгдлөө санах ойд хадгалдаг тул registrationID ажиллуулах бүрд өсдөг, иймээс яг утгыг нь биш, тоо эсэхийг нь л шалгасан.
+
+## Newman
+
+```bash
+newman run lab05-collection.json 2>&1 | tee results/newman-pass.txt
+echo "exit=$pipestatus[1]"
+```
+
+`| tee`-ийн дараа `$?` нь tee-ийн код болдог тул exit code-ийг zsh-ийн `$pipestatus[1]`-ээр авсан.
+
+| Ажиллуулалт | Файл | requests failed | assertions executed | assertions failed | exit |
+|---|---|---|---|---|---|
+| PASS | [newman-pass.txt](results/newman-pass.txt) | 0 | 36 | 0 | 0 |
+| FAIL | [newman-fail.txt](results/newman-fail.txt) | 0 | 36 | 1 | 1 |
+| DOWN | [newman-down.txt](results/newman-down.txt) | 23 | 36 | 36 | 1 |
+
+Тест 10 байгаа, спецификаци бүрд нэг folder. Нийт 36 assertion ажилласан, үүнд setup PUT-үүдийн "Setup амжилттай" шалгалт ч орсон.
+
+FAIL-д [lab05-collection-fail.json](lab05-collection-fail.json)-ийн 1-р тест 201-ийн оронд 200 хүлээдэг болгосон. Гаралтад `expected response to have status code 200 but got 201` гэж гарсан. Үндсэн collection зөв хэвээр.
+
+DOWN-д серверээ унтраагаад ажиллуулахад бүх хүсэлт `connect ECONNREFUSED 127.0.0.1:3000` гэж унасан. FAIL-д сервер хариу өгсөн ч миний хүлээлт буруу байсан бол DOWN-д сервер огт хариулаагүй, өөрөөр хэлбэл энэ нь oracle-ийн биш холболтын буюу интерфейсийн алдаа юм.
